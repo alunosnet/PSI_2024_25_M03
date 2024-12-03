@@ -14,12 +14,12 @@ def Primo(n) -> bool:
             break
     return E_Primo
 
-if Primo(5) == True:
-    print("O nº 5 é primo")
-else:
-    print("O nº 5 não é primo")
+# if Primo(5) == True:
+#     print("O nº 5 é primo")
+# else:
+#     print("O nº 5 não é primo")
 
-if Primo(10) == True:
-    print("O nº 10 é primo")
-else:
-    print("O nº 10 não é primo")
+# if Primo(10) == True:
+#     print("O nº 10 é primo")
+# else:
+#     print("O nº 10 não é primo")
