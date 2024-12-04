@@ -19,28 +19,58 @@ import utils
 #     Função para definir a configuração do restaurante (nº mesas e nº de clientes)
 #     """
 #     pass
-def Entrada():
+def EntradaClientes(max_clientes,n_atual):
     """
-    Responsável por ler o nº de clientes e de mesas e registar a entrada dos clientes
+    Responsável por registar a entrada dos clientes
     """
-    pass
+    #testar se o restaurante não pode receber mais clientes
+    if max_clientes == n_atual:
+        print("Restaurante está cheio")
+        return 0
+    #ler o nº de clientes a entrar
+    lugar_livres = max_clientes - n_atual
+    entrar = utils.ler_numero_inteiro_limites(1,lugar_livres,"Quantos clientes: ")
+    #devolve o nº de clientes que entraram
+    return entrar
+def EntradaMesas(max_mesas,n_atual):
+    """
+    Responsável por registar a ocupação das mesas
+    """
+    #testar se não tem mesas livres
+    if max_mesas == n_atual:
+        print("Restaurante está cheio")
+        return 0
+    mesas_livres = max_mesas - n_atual
+    entrar = utils.ler_numero_inteiro_limites(1,mesas_livres,"Quantas mesas: ")
+    return entrar
 def Sair():
     """
     Responsável por registar a saída dos clientes e atualizar o custo total das refeições
     """
     pass
-def Estado():
+def Estado(max_mesas,max_clientes,mesas,clientes):
     """
     Calcula e mostra os dados estatísticos do estado do restaurante
     """
-    pass
+    print(clientes)
 def Menu():
-    n_mesas    = utils.ler_numero_inteiro("Quantas mesas tem o restaurante: ")
-    n_clientes = utils.ler_numero_inteiro("Quantas clientes podem estar no restaurante: ")
+    #nº máximo de mesas e clientes que o restaurante pode utilizar
+    n_max_mesas    = utils.ler_numero_inteiro("Quantas mesas tem o restaurante: ")
+    n_max_clientes = utils.ler_numero_inteiro("Quantos clientes podem estar no restaurante: ")
     op = 1
+    #nº de mesas e clientes atualmente no restaurante
+    n_atual_mesas    = 0
+    n_atual_clientes = 0
     while op != 4:
         op = utils.ler_numero_inteiro_limites(1,4,"1.Entrada\n2.Saída\n3.Estado\n4.Terminar")
-        
+        if op == 1:
+            #Entrada dos clientes
+            n_clientes_entraram = EntradaClientes(n_max_clientes,n_atual_clientes)
+            n_mesas_ocupadas    = EntradaMesas(n_max_mesas,n_atual_mesas)
+            n_atual_clientes    = n_atual_clientes + n_clientes_entraram
+            n_atual_mesas       = n_atual_mesas +  n_mesas_ocupadas
+        if op == 3:
+            Estado(n_max_mesas,n_max_clientes,n_atual_mesas,n_atual_clientes)
 
 def Main():
     Menu()
