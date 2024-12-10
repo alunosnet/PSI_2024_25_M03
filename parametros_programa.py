@@ -1,8 +1,10 @@
 import sys
 
-print(sys.argv)
+# print(sys.argv)
 
-print(len(sys.argv))
+# print(len(sys.argv))
 
-for arg in sys.argv:
-    print(arg)
+# for arg in sys.argv:
+#     print(arg)
+
+print(sys.argv[1])
