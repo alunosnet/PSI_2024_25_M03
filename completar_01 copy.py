@@ -14,7 +14,7 @@ print("Completou testes E_Impar")
 ############################################################################
 def Ola_User(nome:str):
     """Diz olá ao user. Se nome não estiver preenchido não diz nada"""
-    if nome == "":
+    if nome=="":
         return
     print(f"Olá {nome}")
 
@@ -26,9 +26,8 @@ print("Completou testes Ola_User")
 #############################################################################
 def JuntaDoisNomes(nome1:str,nome2:str) -> str:
     """Devolve os nomes numa string separados por um espaço em branco. O primeiro nome deve ser o que alfabeticamente for menor."""
-    if nome1 < nome2:
+    if nome1<nome2:
         return f"{nome1} {nome2}"
-        #return nome1 + " " + nome2
     return f"{nome2} {nome1}"
 
 print("Testes JuntaDoisNomes")
@@ -40,14 +39,15 @@ print("Completou testes JuntaDoisNomes")
 maior = ""
 
 def QualOMaior(nome1:str, nome2: str):
-    """Função para alterar a variável global maior guardando o nome com mais letras. Caso sejam de igual tamanho deve guardar a palavra Iguais"""
+    """Função para alterar a variável global maior e guarda o nome com mais letras. Caso sejam de igual tamanho deve guardar a palavra Iguais"""
     global maior
     if len(nome1) > len(nome2):
         maior = nome1
     elif len(nome2) > len(nome1):
         maior = nome2
-    else: 
+    else:
         maior = "Iguais"
+
 
 print("Testes QualOMaior")
 QualOMaior("Ana","Maria")
@@ -57,31 +57,3 @@ assert maior == "Iguais", "Erro no oitavo teste, maior devia ser Iguais"
 QualOMaior("António","Zé")
 assert maior == "António", "Erro no nono teste, maior devia ser António"
 print("Completou testes QualOMaior")
-
-##################################################################################
-cartas = "23456QJK7A"
-
-def CartaMaisForte(carta1:str, carta2:str) -> str:
-    """Função que recebe duas cartas de um baralho e devolve a mais forte ou None caso sejam iguais"""
-    global cartas
-    if carta1 == carta2:
-        return None
-    p1 = 0
-    for c in cartas:
-        if c == carta1:
-            break
-        p1 = p1 + 1
-    p2 = 0
-    for c in cartas:
-        if c == carta2:
-            break
-        p2 = p2 + 1
-    if p1 > p2:
-        return carta1
-    return carta2
-
-print("Testes CartaMaisForte")
-assert CartaMaisForte("2","3") == "3", "Erro no décimo teste, devia devolver 3"
-assert CartaMaisForte("A","A") == None, "Erro no décimo primeiro teste, devia devolver None"
-assert CartaMaisForte("K","7") == "7", "Erro no décimo segundo teste, devia devolver 7"
-print("Completou testes CartaMaisForte")
